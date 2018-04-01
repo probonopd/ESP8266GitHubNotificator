@@ -11,6 +11,8 @@ const int httpsPort = 443;
 
 Ticker checker;
 
+bool check_now = false;
+
 void setup() {
   pinMode(LED_BUILTIN, OUTPUT);
   digitalWrite(LED_BUILTIN, HIGH);
@@ -19,8 +21,12 @@ void setup() {
   wifiManager.autoConnect("AutoConnectAP");
   Serial.println("IP address: ");
   Serial.println(WiFi.localIP());
-  check();
-  checker.attach(60, check);
+  mark_to_be_checked();
+  checker.attach(60, mark_to_be_checked);
+}
+
+void mark_to_be_checked() {
+  check_now = true;
 }
 
 void check() {
@@ -53,10 +59,16 @@ void check() {
     }
     if (line == "\r") {
       Serial.println("headers received");
+      client.stop();
       break;
     }
   }
+  client.stop();
 }
 
 void loop() {
+  if (check_now == true) {
+    check();
+    check_now = false;
+  }
 }
