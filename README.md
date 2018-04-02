@@ -1,4 +1,6 @@
-# ESP8266GitHubNotificator: ![bell](https://user-images.githubusercontent.com/2480569/38178171-8423b9c8-35fc-11e8-94ad-3329e2fa6dd5.png) in hardware
+# ESP8266GitHubNotificator
+
+![](https://user-images.githubusercontent.com/2480569/38193609-28857d5a-3673-11e8-9594-56d4900e058b.jpg)
 
 The ESP8266 lights up the built-in blue LED if you have GitHub notifications waiting.
 
